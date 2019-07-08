@@ -1,0 +1,37 @@
+<div class="container">
+    <fieldset class="form-group">
+        <label>Project:</label>
+        <input type="text" [(ngModel)]="taskObject.projectId" class="form-control" name="projectId" required="required">
+    </fieldset>
+    <fieldset class="form-group">
+        <label>Task</label>
+        <input type="text" [(ngModel)]="taskObject.taskName" class="form-control" name="task" required="required">
+    </fieldset>
+    <fieldset class="form-group">
+        <label>Priority</label>
+        <input type="hidden" [(ngModel)]="taskObject.priority" class="form-control" name="priority" required="required">
+        <ng5-slider [(value)]="taskObject.priority" [options]="options"></ng5-slider>
+    </fieldset>
+    <fieldset class="form-group">
+        <label>Parent Task</label>
+        <input type="text" [(ngModel)]="taskObject.parentTask" class="form-control" name="parentTask">
+    </fieldset>
+    <fieldset class="form-group">
+        <label>Start Date</label>
+        <input type="date" [ngModel]="taskObject.startDate | date:'yyyy-MM-dd'" (ngModelChanged)=$event class="form-control"
+            name="startDate" required="required">
+    </fieldset>
+    <fieldset class="form-group">
+        <label>End Date</label>
+        <input type="date" [ngModel]="taskObject.endDate | date:'yyyy-MM-dd'" (ngModelChanged)=$event class="form-control"
+            name="endDate" required="required">
+    </fieldset>
+    <fieldset class="form-group">
+        <label>User:</label>
+        <input type="text" [(ngModel)]="taskObject.user" class="form-control" readonly name="user" required="required">
+    </fieldset>
+    <fieldset class="form-group">
+        <button class="btn" (click)="editTask()">Update</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button class="btn" (click)="cancel()">Cancel</button>
+    </fieldset>
+</div>

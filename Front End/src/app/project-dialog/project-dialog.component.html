@@ -1,0 +1,14 @@
+<h2 mat-dialog-title>Projects</h2>
+<mat-dialog-content>
+    <input type="text" [(ngModel)]="searchFilter.projectName" placeholder="Search Project..." id="searchProject" name="searchProject">
+    <div *ngFor="let project of projects | filterBy: searchFilter">
+        <h6>
+            <pre>{{ project.projectName }} </pre>
+        </h6>
+    </div>
+
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button (click)="cancel()">Cancel</button>
+    <button mat-raised-button (click)="save()">Save</button>
+</mat-dialog-actions>

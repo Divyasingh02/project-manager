@@ -1,0 +1,36 @@
+<div class="container">
+    Project: <input class="col-md-3" type="text">&nbsp;&nbsp;&nbsp;
+    <button mat-raised-button class="btn" (click)="openDialogProject()">Search</button>&nbsp;&nbsp;&nbsp;&nbsp;
+    Sortby:&nbsp;&nbsp;&nbsp;
+    <button class="btn" (click)="sortByStartDate()">Start Date</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button class="btn" (click)="sortByEndDate()">End Date</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button class="btn" (click)="sortByPriority()">Priority</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button class="btn" (click)="sortByCompleted()">Completed</button>
+</div>
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Task</th>
+                <th>Parent Task</th>
+                <th>Priority</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let taskob of taskList | orderBy : order">
+                <td>{{ taskob.taskName }}</td>
+                <td>{{ taskob.parentTask }}</td>
+                <td>{{ taskob.priority }}</td>
+                <td>{{ taskob.startDate | date}}</td>
+                <td>{{ taskob.endDate | date}}</td>
+                <td><button *ngIf="taskob.status == 'N'" (click)="editTask(taskob.taskId)">Edit</button></td>
+                <td><button *ngIf="taskob.status == 'N'" (click)="deleteTask(taskob.taskId)">Delete</button></td>
+                <td><button *ngIf="taskob.status == 'N'" (click)="finishTask(taskob.taskId)">End Task</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
